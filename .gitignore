@@ -130,3 +130,6 @@ dmypy.json
 
 # JetBrains generated folder
 .idea/
+
+# Config file
+config.py
