@@ -10,13 +10,13 @@ data = {
 
 
 @command(**data)
-def avatar(ctx: Context, user: User = None):
+async def avatar(ctx: Context, user: User = None):
     user = user or ctx.author
 
     embed = generic_embed(ctx.bot)
 
     embed.title = 'Avatar'
-    embed.description = f'Avatar for {user}'
+    embed.description = f'Avatar for {user.mention}'
 
     embed.set_image(url=str(user.avatar_url_as(size=2048)))
 

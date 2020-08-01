@@ -11,7 +11,7 @@ data = {
 
 @guild_only()
 @command(**data)
-def server_icon(ctx: Context):
+async def server_icon(ctx: Context):
     guild: Guild = ctx.guild
 
     embed = generic_embed(ctx.bot)

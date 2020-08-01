@@ -11,8 +11,8 @@ data = {
 }
 
 
-@command(**data)
 @guild_only()
+@command(**data)
 async def guild_info(ctx: Context):
     embed = generic_embed(ctx.bot)
 

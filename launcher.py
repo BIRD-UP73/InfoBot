@@ -1,14 +1,11 @@
 from discord.ext import commands
 from config import prefix, token
+from events import EventHandler
 
 bot = commands.Bot(command_prefix=prefix)
 
 bot.load_extension('commands._setup')
 
-
-@bot.listen()
-async def on_ready():
-    print(f'Logged in as {bot.user}')
-
+bot.add_cog(EventHandler(bot))
 
 bot.run(token)
