@@ -1,4 +1,4 @@
-from discord import Role, Color
+from discord import Role
 from discord.ext.commands import Context, command, guild_only
 
 from config import datetime_format
