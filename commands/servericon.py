@@ -12,6 +12,10 @@ data = {
 @guild_only()
 @command(**data)
 async def server_icon(ctx: Context):
+    """
+    Shows the server icon
+    :param ctx: command invocation context
+    """
     guild: Guild = ctx.guild
 
     embed = generic_embed(ctx.bot)

@@ -15,6 +15,11 @@ data = {
 @guild_only()
 @command(**data)
 async def role_info(ctx: Context, role: Role):
+    """
+    Shows information about a role
+    :param ctx: command invocation context
+    :param role: the role
+    """
     embed = generic_embed(ctx.bot)
 
     embed.title = role.name

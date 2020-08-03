@@ -1,7 +1,7 @@
 from typing import Union
 
-from discord import TextChannel, VoiceChannel, DMChannel
-from discord.ext.commands import Context, command
+from discord import TextChannel, VoiceChannel
+from discord.ext.commands import Context, command, guild_only
 
 from config import datetime_format
 from embed import generic_embed
@@ -12,13 +12,20 @@ data = {
 }
 
 
+@guild_only()
 @command(**data)
-async def channel_info(ctx: Context, channel: Union[TextChannel, VoiceChannel, DMChannel] = None):
+async def channel_info(ctx: Context, channel: Union[TextChannel, VoiceChannel] = None):
+    """
+    Shows channel info
+    :param ctx: command invocation context
+    :param channel: the channel, set to ctx.channel if not provided
+    """
     channel = channel or ctx.channel
 
     embed = generic_embed(ctx.bot)
 
     embed.title = 'Channel info'
+
     embed.description = f'Channel info for {channel.mention}'
 
     embed.add_field(name='Channel ID', value=f'`{channel.id}`')

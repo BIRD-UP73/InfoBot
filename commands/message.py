@@ -13,6 +13,11 @@ data = {
 
 @command(**data)
 async def message_info(ctx: Context, message: Message):
+    """
+    Shows message info
+    :param ctx: command invocation context
+    :param message: the message
+    """
     embed = generic_embed(ctx.bot)
 
     embed.title = 'Message'

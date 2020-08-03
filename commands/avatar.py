@@ -11,6 +11,11 @@ data = {
 
 @command(**data)
 async def avatar(ctx: Context, user: User = None):
+    """
+    Shows a users avatar
+    :param ctx: command invocation context
+    :param user: the user, set to ctx.author if no user is given
+    """
     user = user or ctx.author
 
     embed = generic_embed(ctx.bot)
@@ -18,6 +23,6 @@ async def avatar(ctx: Context, user: User = None):
     embed.title = 'Avatar'
     embed.description = f'Avatar for {user.mention}'
 
-    embed.set_image(url=str(user.avatar_url_as(size=2048)))
+    embed.set_image(url=str(user.avatar_url_as(size=4096)))
 
     await ctx.send(embed=embed)

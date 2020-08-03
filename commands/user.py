@@ -1,5 +1,5 @@
 from discord import User, Embed, Member
-from discord.ext.commands import Context, command, Bot
+from discord.ext.commands import Context, command
 
 from config import datetime_format
 
@@ -15,7 +15,7 @@ async def user_info(ctx: Context, user: User = None):
     """
     Displays user information
     :param ctx: command invocation context
-    :param user:
+    :param user: the user, set to ctx.author if not provided
     """
     user = user or ctx.author
 
@@ -37,7 +37,3 @@ async def user_info(ctx: Context, user: User = None):
         embed.add_field(name='Joined at', value=joined_at)
 
     await ctx.send(embed=embed)
-
-
-def setup(bot: Bot):
-    bot.add_command(user_info)

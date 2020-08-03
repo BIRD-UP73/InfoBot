@@ -14,6 +14,10 @@ data = {
 @guild_only()
 @command(**data)
 async def guild_info(ctx: Context):
+    """
+    Shows guild information
+    :param ctx: command invocation context
+    """
     embed = generic_embed(ctx.bot)
 
     guild: Guild = ctx.guild

@@ -5,6 +5,12 @@ from discord.ext.commands import Bot
 
 
 def error_embed(bot: Bot, error_msg: str):
+    """
+    Creates an embed displaying an error message
+
+    :param bot: the bot
+    :param error_msg: the error message
+    """
     embed = generic_embed(bot)
 
     embed.title = 'Error'
@@ -15,6 +21,15 @@ def error_embed(bot: Bot, error_msg: str):
 
 
 def generic_embed(bot: Bot) -> Embed:
+    """
+    Creates a generic embed, which includes
+    - Bot name in the footer
+    - Bot avatar in the footer
+    - Timestamp
+
+    :param bot: the bot
+    :return: the embed
+    """
     embed = Embed()
 
     embed.timestamp = datetime.now()

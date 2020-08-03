@@ -15,6 +15,12 @@ data = {
 
 @command(**data)
 async def permissions(ctx: Context, user: Member = None, channel: Union[TextChannel, VoiceChannel] = None):
+    """
+    Shows user permissions in a guild or channel
+    :param ctx: command invocation context
+    :param user: the user, will be set to ctx.author if not provided
+    :param channel: the channel, will give guild permissions of not provided
+    """
     user = user or ctx.author
 
     if channel:
@@ -24,11 +30,19 @@ async def permissions(ctx: Context, user: Member = None, channel: Union[TextChan
         desc = f'Server permissions for {user.mention}'
         perms = user.guild_permissions
 
-    embed = send_embed(ctx.bot, user, perms, desc)
+    embed = make_embed(ctx.bot, user, perms, desc)
     await ctx.send(embed=embed)
 
 
-def send_embed(bot: Bot, user: Member, perms: Permissions, desc: str) -> Embed:
+def make_embed(bot: Bot, user: Member, perms: Permissions, desc: str) -> Embed:
+    """
+    Sends the embed showing user permissions
+    :param bot: the bot itself
+    :param user: the user for which the permissions are shown
+    :param perms: the permissions
+    :param desc: embed description indicating if guild or channel permissions are shown
+    :return: the embed displaying user permissions
+    """
     embed = generic_embed(bot)
 
     embed.title = 'Permissions'
