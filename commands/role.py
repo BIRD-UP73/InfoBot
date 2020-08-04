@@ -23,8 +23,6 @@ async def role_info(ctx: Context, role: Role):
     embed = generic_embed(ctx.bot)
 
     embed.title = role.name
-    embed.description = f'{role.mention}'
-
     embed.colour = role.colour
 
     embed.add_field(name='Created at', value=role.created_at.strftime(datetime_format))
@@ -32,6 +30,9 @@ async def role_info(ctx: Context, role: Role):
 
     embed.add_field(name='Hoisted', value=bool_to_str(role.hoist), inline=True)
     embed.add_field(name='Mentionable', value=bool_to_str(role.mentionable), inline=True)
+
+    if role.mentionable:
+        embed.add_field(name='Mention', value=role.mention)
 
     embed.add_field(name='Position', value=role.position)
 
