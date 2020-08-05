@@ -1,7 +1,8 @@
-from discord import User, Embed, Member
+from discord import User, Member
 from discord.ext.commands import Context, command
 
 from config import datetime_format
+from embed import generic_embed
 
 data = {
     'name': 'userinfo',
@@ -19,7 +20,7 @@ async def user_info(ctx: Context, user: User = None):
     """
     user = user or ctx.author
 
-    embed = Embed()
+    embed = generic_embed(ctx.bot)
 
     embed.title = 'User info'
     embed.description = f'User info for {user.mention}'
